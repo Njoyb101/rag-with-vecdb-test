@@ -1,0 +1,41 @@
+[project]
+name = "rag-with-vecdb"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "duckduckgo-search>=8.0.4",
+    "langchain>=0.3.25",
+    "langchain-community>=0.3.25",
+    "langchain-core>=0.3.65",
+    "langchain-openai>=0.3.23",
+    "langchain-pinecone>=0.2.8",
+    "langgraph>=0.4.8",
+    "pinecone>=7.0.2",
+    "pydantic>=2.11.7",
+    "pypdf>=5.6.0",
+    "python-dotenv>=1.1.0",
+    "streamlit>=1.45.1",
+]
+
+[dependency-groups]
+dev = [
+    "pyright==1.1.401",
+    "pytest>=8.4.0",
+    "pytest-cov>=6.2.1",
+    "ruff>=0.11.13",
+]
+
+[tool.pyright]
+exclude = [".venv"]    # since virtual env name is .venv
+pythonVersion = "3.11" # same as the project python version
+venvPath = "."
+venv = ".venv" 
+
+[tool.ruff.lint]
+extend-select = ["E", "W", "I"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests", "integration"]
+addopts='-v -s --cov=. --cov-report=term-missing'
