@@ -1,0 +1,1 @@
+OPEN_AI_CHAT_TOOLS_MODEL = "gpt-4o-mini"
