@@ -20,3 +20,6 @@ api.http
 
 # UV generated files
 uv.lock
+
+#log file
+app.log

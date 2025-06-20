@@ -1,0 +1,3 @@
+DataIngestion:
+    data_pdf_path: "./data/analytics-report.pdf"
+    save_path: "./data/analytics-report.pkl"
