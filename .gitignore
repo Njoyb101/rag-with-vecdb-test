@@ -23,3 +23,7 @@ uv.lock
 
 #log file
 app.log
+
+#data
+*.pdf
+*.pkl
