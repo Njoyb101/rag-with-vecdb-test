@@ -34,3 +34,24 @@ def save_chunks(path: str, chunks: List[Document]):
         logger.error(f"Unable to store chunks at {path}")
         logger.error(e)
         raise
+
+
+def load_docs(path: str):
+    """Loads pickle files from path
+
+    Args:
+        path (str): _description_
+
+    Returns:
+        _type_: _description_
+    """
+    try:
+        logger.info(f"Loading chunks from {path}...")
+        with open(path, "rb") as f:
+            docs = pickle.load(f)
+        logger.info(f"Loading chunks from {path}...completed")
+        return docs
+    except Exception as e:
+        logger.error(f"Unable to load pickle chunks from {path}")
+        logger.error(e)
+        raise
