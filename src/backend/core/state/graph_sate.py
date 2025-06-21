@@ -1,9 +1,9 @@
 import operator
-from typing import Annotated, Sequence, TypedDict
+from typing import Annotated, NotRequired, Sequence, TypedDict
 
 from langchain_core.messages import BaseMessage
 
 
 class GraphState(TypedDict):
     messages: Annotated[Sequence[BaseMessage], operator.add]
-    response: Annotated[Sequence[BaseMessage], operator.add] | None
+    response: NotRequired[Annotated[Sequence[BaseMessage], operator.add]]  # optional
