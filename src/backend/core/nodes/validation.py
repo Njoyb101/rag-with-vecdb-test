@@ -9,7 +9,7 @@ from src.backend.utils.logger import logging
 logger = logging.getLogger(__file__)
 
 
-class Validation_Node:
+class ValidatorNode:
     def __init__(self):
         self.parser = parser_validator
         self.llm = settings.get_llm()
@@ -55,5 +55,17 @@ class Validation_Node:
             logger.error(e)
             raise
 
-    def Route_to(self, state: GraphState) -> BaseMessage:
-        return state["messages"][-1]
+    def route_to(self, state: GraphState):
+        message: BaseMessage = state["messages"][-1]
+        route_path = message.content
+
+        # Handle unexpected types (e.g., list or dict)
+        if isinstance(route_path, list):
+            route_path = (
+                route_path[-1]
+                if isinstance(route_path[-1], str)
+                else str(route_path[-1])
+            )
+        elif isinstance(route_path, dict):
+            route_path = str(route_path)
+        return route_path
