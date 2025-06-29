@@ -8,7 +8,7 @@ from src.backend.config.data_ingestion_config import DataIngestionConfig
 from src.backend.utils.logger import logging
 from src.backend.utils.utils import save_chunks
 
-logger = logging.getLogger(__name__)
+logger = logging.getLogger(__file__)
 
 
 class ChunkExtractor:
@@ -101,13 +101,19 @@ class DataIngestion:
             config (DataIngestionConfig): Configuration object containing
                 paths for input PDF and output chunk storage.
         """
+        logger.info("Data Ingestion Orchestration intitialized...")
         self.config = DataIngestionConfig()
         self.extractor = ChunkExtractor(data_path=self.config.data_pdf_path)
         self.saver = ChunkSaver(save_path=self.config.save_path)
+        logger.info("Data Ingestion Orchestration intitialized...completed")
 
     def ingest(self):
         """
         Run the complete ingestion process: extract chunks and save them.
         """
+        logger.info("Data Ingestion extraction started...")
         chunks = self.extractor.extract_pdf_chunks()
+        logger.info("Data Ingestion extraction started...completed")
+        logger.info("Chunks saving started...")
         self.saver.save(chunks)
+        logger.info("Chunks saving started...completed")

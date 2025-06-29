@@ -66,7 +66,7 @@ class VectorDb:
                 embedding=embedding_model,
             )
 
-            path = DataIngestionConfig().data_pdf_path
+            path = DataIngestionConfig().save_path
             docs = load_docs(path=path)
 
             ids = [str(uuid4) for _ in range(len(docs))]

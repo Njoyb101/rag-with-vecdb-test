@@ -11,6 +11,6 @@ class DataIngestionConfig:
         data_config = read_yaml(CONFIG_YAML_PATH)
         self.data_pdf_path = data_config["DataIngestion"]["data_pdf_path"]
         self.save_path = data_config["DataIngestion"]["save_path"]
-        logger.info("Loading YAML file...completed")
-        logger.info(f"data_path = {self.data_pdf_path}")
+        logger.info(f"data_pdf_path = {self.data_pdf_path}")
         logger.info(f"save_path = {self.save_path}")
+        logger.info("Loading YAML file...completed")
